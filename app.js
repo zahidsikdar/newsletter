@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
@@ -32,10 +34,10 @@ app.post("/", function(req, res){
   };
 
   const jsonData = JSON.stringify(data);
-  const url = "https://us14.api.mailchimp.com/3.0/lists/d17b324727"
+  const url = process.env.URL
   const options = {
     method: "POST",
-    auth: "zahid1:11e4ae6a6a5ff27d9f3e07b7134253ab-us14"
+    auth: process.env.AUTH
   }
 
   const request = https.request(url, options, function(response){
@@ -60,16 +62,6 @@ app.post("/", function(req, res){
 app.post("/failure", function(req, res){
   res.redirect("/")
 })
-
-
-
-//API keys
-// 11e4ae6a6a5ff27d9f3e07b7134253ab-us14
-//11e4ae6a6a5ff27d9f3e07b7134253ab-us14
-
-// Auidience Id
-// d17b324727
-
 
 
 
